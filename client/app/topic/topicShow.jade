@@ -1,0 +1,49 @@
+h1.col-md-12
+  .col-md-6 
+    |   Topic {{ topic.topic.DisplayName }}
+    
+.clearfix
+
+h3.col-md-12
+  .col-md-6 
+    |   Create subscription
+    
+.clearfix
+
+form.form.col-md-12
+  .col-md-3
+    input.form-control(type='text', placeholder='I love Schnitzels!', ng-model='topic.subscription.message')
+  .col-md-3  
+    textarea.form-control(type='text', placeholder='payload here...', ng-model='topic.subscription.payload', rows='5')
+  .col-md-3
+    input.form-control(type='date', placeholder='I love Schnitzels!', ng-model='topic.subscription.date')
+  .col-md-3
+    input.form-control(type='time', placeholder='I love Schnitzels!', ng-model='topic.subscription.date')
+  .clearfix
+  .col-md-3
+    button.btn.btn-primary.btn-sm(ng-click='topic.scheduleNotification(topic.subscription)')
+      | Schedule
+br      
+.clearfix
+br
+table.table
+  tr
+    td
+      | Name
+    td
+      | Message
+    td
+      | Time to deliver
+    td
+      | Actions
+          
+  tr(ng-repeat='message in topic.topic.messages', ng-click='')
+    td
+      | {{message.name}}
+    td
+      | {{message.data.Subject}}
+    td
+      | {{message.nextRunAt}}
+    td.text-center
+      button.btn.btn-default.btn-sm(ng-click='topic.removeSchedule(message)')
+        i.fa.fa-minus(aria-hidden="true")

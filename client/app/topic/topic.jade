@@ -1,0 +1,30 @@
+h1.col-md-12
+  .col-md-3 
+    |   Topics
+      
+
+table.table
+  tr
+    td
+      | Name
+    td
+      | Subscriptions pending
+    td
+      | Subscriptions confirmed
+    td
+      | Subscriptions deleted
+    td
+      | Actions
+          
+  tr(ng-repeat='topic in topics.topics', ng-click='')
+    td
+      | {{topic.DisplayName}}
+    td
+      | {{topic.SubscriptionsPending}}
+    td
+      | {{topic.SubscriptionsConfirmed}}
+    td
+      | {{topic.SubscriptionsDeleted}}
+    td.text-center
+      button.btn.btn-default.btn-sm(ng-click='topics.schedulePush(topic)')
+        i.fa.fa-bell-o(aria-hidden="true")
